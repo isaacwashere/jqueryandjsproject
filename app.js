@@ -1,12 +1,7 @@
 let voters = [];
-
-
 let democratCandidates = [];
-
 let republicanCandidates = [];
-
 let independentCandidates = [];
-
 let finalB = [];
 
 class Person {
@@ -150,7 +145,7 @@ function winner()
 
 
 
-//TODO: diff between value and val 
+//TODO: lookup diff between value and val 
 $(document).ready(function(){
 
 
@@ -160,7 +155,7 @@ $(document).ready(function(){
         let voterIdeology = $('#voter-ideology').val()
         let newVoterP = new Voter(voterName, voterIdeology);
         newVoterP.newVoter()
-        $("#voter-list .list-group").append('<li class="list-group-item">' + newVoterP.ideology + ' - ' + newVoterP.name +  '</li>');
+        $("#voter-list .list-group").append(`<li class="list-group-item">${newVoterP.name} - ${newVoterP.ideology}</li>`);
     });
 
     
@@ -170,7 +165,7 @@ $(document).ready(function(){
         let candidateParty = $('#candidate-party').val()
         let newCandidateP = new Candidate(candidateName, candidateParty);
         newCandidateP.newCandidate();
-        $("#candidate-list .list-group").append('<li class="list-group-item">' + newCandidateP.name + ' - ' + newCandidateP.party + '</li>');
+        $("#candidate-list .list-group").append(`<li class="list-group-item">${newCandidateP.name} - ${newCandidateP.party}</li>`);
         
     });
 
@@ -179,7 +174,7 @@ $(document).ready(function(){
         // event.preventDefault();
         vote();
         winner();
-        alert(winner().name);
+        alert(winner().name + " " +  winner().party);
     });
 })
 
