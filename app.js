@@ -7,23 +7,20 @@ let finalB = [];
 class Person {
     constructor(name){
         this.name = name;
-        
-    }    
-}    
-
+    }
+}
 
 class Voter extends Person {
     constructor(name, ideology) {
         super(name);
         this.ideology = ideology;
-        
-    }    
+
+    }
     newVoter() {
         voters.push(this);
       console.log(voters);
     }
-}    
-
+}
 
 class Candidate extends Person {
     constructor(name, party, votes = 0) {
@@ -36,25 +33,23 @@ class Candidate extends Person {
         {
             democratCandidates.push(this);
             console.log(democratCandidates);
-        }   
+        }
         else if(this.party === "Republican")
         {
             republicanCandidates.push(this);
             console.log(republicanCandidates);
         }
         else if(this.party === "Independent") {
-            
+
             independentCandidates.push(this);
             console.log(independentCandidates);
         }
-        
-    }   
-}    
+    }
+}
 
-
-function vote() 
+function vote()
 {
-    return voters.forEach(function(element) 
+    return voters.forEach(function(element)
     {
         let num = Math.ceil(Math.random() * 5);
         let num2 = Math.ceil(Math.random() * 4);
@@ -80,7 +75,7 @@ function vote()
            }
            else if(num2 === 4) {
                myVote('Republican');
-           } 
+           }
         }
         else if(element.ideology === "Conservative")
         {
@@ -94,11 +89,10 @@ function vote()
                myVote('Democrat');
            }
         }
-    }); 
+    });
 }
 
-
-function myVote(party) 
+function myVote(party)
 {
         if(party === 'Democrat') {
             let nNum = Math.floor(Math.random() * democratCandidates.length);
@@ -114,20 +108,19 @@ function myVote(party)
         }
 }
 
-
-function winner() 
+function winner()
 {
     // let finalB = [];
     finalB.push(democratCandidates.reduce(function(current, acc){
-        return leed1 = (current.votes > acc.votes) ? current : acc 
+        return leed1 = (current.votes > acc.votes) ? current : acc
     }))
 
     finalB.push(independentCandidates.reduce(function(current, acc){
-        return leed2 = (current.votes > acc.votes) ? current : acc 
+        return leed2 = (current.votes > acc.votes) ? current : acc
     }))
 
     finalB.push(republicanCandidates.reduce(function(current, acc){
-        return leed3 = (current.votes > acc.votes) ? current : acc 
+        return leed3 = (current.votes > acc.votes) ? current : acc
     }))
 
      return finalB.reduce(function(current, acc) {
@@ -145,7 +138,6 @@ function winner()
 
 
 
-//TODO: lookup diff between value and val 
 $(document).ready(function(){
 
 
@@ -158,7 +150,7 @@ $(document).ready(function(){
         $("#voter-list .list-group").append(`<li class="list-group-item">${newVoterP.name} - ${newVoterP.ideology}</li>`);
     });
 
-    
+
     $('#candidate-form form').on('submit', function(event) {
         event.preventDefault();
         let candidateName = $('#candidate-name').val()
@@ -166,10 +158,10 @@ $(document).ready(function(){
         let newCandidateP = new Candidate(candidateName, candidateParty);
         newCandidateP.newCandidate();
         $("#candidate-list .list-group").append(`<li class="list-group-item">${newCandidateP.name} - ${newCandidateP.party}</li>`);
-        
+
     });
 
-    
+
     $("#vote-btn-div").on('click', function() {
         // event.preventDefault();
         vote();
@@ -177,42 +169,3 @@ $(document).ready(function(){
         alert(winner().name + " " +  winner().party);
     });
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
