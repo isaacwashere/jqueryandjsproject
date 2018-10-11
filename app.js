@@ -139,8 +139,6 @@ function winner()
 
 
 $(document).ready(function(){
-
-
     $('#voter-form form').on('submit', function(event) {
         event.preventDefault();
         let voterName = $('#voter-name').val()
